@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 /*******************
  * routing
  *******************/
+const authRouter = require('./routes/auth/auth.router');
 /*
 var userRouter = require('./routes/users/users.router'),
 		reservRouter = require('./routes/reservation/reserv.router'),
@@ -33,6 +34,7 @@ var userRouter = require('./routes/users/users.router'),
 		settingRouter = require('./routes/setting/setting.router');
 */
 
+app.use('/auth', authRouter);
 app.get(`*`, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
@@ -78,14 +80,21 @@ app.post('/decoImage', function(req, res) {
  * database
  *******************/
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise; // using native es6 promise
 const config = require('./config');
+mongoose.connect(config.db.uri, config.db.options)
+  .then(() => console.log("DB Connected!"))
+  .catch((err) => {
+    console.error("DB Connect error : " + err);
+  });
+/*
 mongoose.connect(config.db.uri, config.db.options, function(err) {
   if (err) {
     console.log('mongodb err : '+ err);
     throw err;
   }
 });
+*/
 
 /*******************
  * http server open
