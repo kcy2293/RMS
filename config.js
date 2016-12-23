@@ -3,4 +3,8 @@ exports.db = {
     options: {
       server: {poolSize: 5},
     }
-}
+};
+
+exports.token = {
+  secret: 'ssongfam-rms-service'
+};

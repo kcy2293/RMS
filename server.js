@@ -1,4 +1,5 @@
 global.env = process.env.NODE_ENV || 'production';
+global.__base = __dirname + '/';
 /*******************
  * modules
  *******************/
