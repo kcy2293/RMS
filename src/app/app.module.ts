@@ -5,8 +5,12 @@ import { HttpModule } from '@angular/http';
 import { RouterModule} from '@angular/router';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { routes } from './app.routes';
 import { AppComponent } from './app.component';
+import { routes } from './app.routes';
+
+import { AuthGuard } from './_shared/auth/index';
+import { AuthService } from './_shared/services/index';
+
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -23,7 +27,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NgbModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

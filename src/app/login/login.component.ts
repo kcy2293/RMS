@@ -9,7 +9,7 @@ import { AuthService } from '../_shared/services/index';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  model: any = {};
   constructor(
     private router: Router,
     private authService: AuthService
@@ -17,6 +17,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.logout();
+  }
+
+  login() {
+    console.log("login clicked");
   }
 
 }

@@ -2,15 +2,16 @@
 	<div class="row">
 		<div class="col-lg-4 offset-lg-4">
 			<h1>Welcome!</h1>
-			<form role="form">
+			<form name="form">
 				<div class="form-content">
 					<div class="form-group">
 						<input type="text" 
 									class="form-control input-underline input-lg" 
-									[(ngModel)]="model.userid"
-									name="userid"
+									[(ngModel)]="model.userid" name="userid"
+									#userid="ngModel"
 									required
 									placeholder="사용자ID">
+						<!--<br><p style="color:white">{{userid.className}}</p>-->
 					</div>
 
 					<div class="form-group">
@@ -18,11 +19,13 @@
 									class="form-control input-underline input-lg" 
 									[(ngModel)]="model.password"
 									name="password"
+									#password="ngModel"
 									required
 									placeholder="비밀번호">
+						<!--<br><p style="color:white">{{password.className}}</p>-->
 					</div>
 				</div>
-				<a class="btn rounded-btn" routerLink="/dashboard/home"> Log in </a>				
+				<a class="btn rounded-btn" type="submit"> Log in </a>				
 				<!--
 				&nbsp;
 				<a class="btn rounded-btn" routerLink="/signup" type="submit">Register</a>
@@ -31,4 +34,3 @@
 		</div>	
 	</div>
 </div>
-{{model}}
